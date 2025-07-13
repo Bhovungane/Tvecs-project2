@@ -1,0 +1,73 @@
+<div class="logs-container">
+  <h2 style="text-align: center; width: 100%;">Tvecs Logs</h2>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <!-- Filter inputs -->
+  <div class="filter-container" style="margin-bottom: 1em;">
+    <label>
+      Body No:
+      <input type="text" [(ngModel)]="filterBodyNo" placeholder="Filter by Body No" />
+    </label>
+    <label style="margin-left: 1em;">
+      Start Date:
+      <input type="date" [(ngModel)]="filterStartDateTime" placeholder="Start Date" />
+    </label>
+    <label style="margin-left: 1em;">
+      End Date:
+      <input type="date" [(ngModel)]="filterEndDateTime" placeholder="End Date" />
+    </label>
+    <label style="margin-left: 1em;">
+      Total Result:
+      <input type="text" [(ngModel)]="filterTotalResult" placeholder="Filter by Total Result" />
+    </label>
+<button (click)="fetchLogs()" class="filter-button" style="margin-left: 1em;">Filter</button>
+<button (click)="clearFilters()" class="clear-filter-button" style="margin-left: 1em;">Clear Filters</button>
+  </div>
+
+  <table *ngIf="logs.length > 0">
+    <thead>
+      <tr>
+        <th>Body No</th>
+        <th>Device ID</th>
+        <th>Total Result</th>
+        <th>Date Time</th>
+        <th>Assembly No</th>
+        <th>VIN No</th>
+        <th>Vehicle Code</th>
+        <th>Frame Type</th>
+        <th>Frame No</th>
+        <th>Vehicle ID</th>
+        <th>Work Group</th>
+        <th>File Path</th>
+        <th>Defects</th>
+      </tr>
+    </thead>
+    <tbody>
+<tr *ngFor="let log of logs" (click)="toggleRow(log.id)" style="cursor: pointer;">
+        <td>{{ log.body_no }}</td>
+        <td>{{ log.device_id }}</td>
+<td [ngStyle]="{'background-color': log.total_result.toLowerCase() === 'pass' ? 'green' : (log.total_result.toLowerCase() === 'fail' ? 'red' : 'transparent'), 'color': 'white'}">{{ log.total_result }}</td>
+        <td>{{ log.date_time | date:'short' }}</td>
+        <td>{{ log.assembly_no }}</td>
+        <td>{{ log.vin_no }}</td>
+        <td>{{ log.vehicle_code }}</td>
+        <td>{{ log.frame_type }}</td>
+        <td>{{ log.frame_no }}</td>
+        <td>{{ log.vehicle_id }}</td>
+        <td>{{ log.work_group }}</td>
+      <td><a href="#" (click)="$event.stopPropagation(); downloadFile(log.file_path)">{{ log.file_path }}</a></td>
+<td>
+  {{ log.total_result.toLowerCase() === 'fail' ? 'Yes' : (log.total_result.toLowerCase() === 'pass' ? 'No' : '') }}
+<span *ngIf="expandedLogId === log.id">
+  <ul>
+    <li *ngFor="let defect of log.defects">
+      {{ defect.defect_description }} (Code: {{ defect.error_code }}, Value: {{ defect.error_value }})
+    </li>
+  </ul>
+</span>
+</td>
+    </tr>
+    </tbody>
+  </table>
+  <div *ngIf="logs.length === 0 && !errorMessage">No logs available.</div>
+</div>

@@ -1,0 +1,81 @@
+/* Styles for login component */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: white; /* override any global background */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif; /* simple font */
+}
+
+.login-container {
+  width: 300px;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  font-size: 20px; /* reduced from 24px */
+  font-weight: 600;
+  color: #222;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #e6f0ff;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.input-icon .icon {
+  font-size: 16px; /* reduced from 18px */
+  margin-right: 10px;
+  color: #3b5998;
+  pointer-events: none;
+}
+
+.input-icon input {
+  border: none;
+  background: transparent;
+  font-size: 12px; /* reduced from 14px */
+  width: 100%;
+  outline: none;
+}
+
+.login-container button {
+  padding: 12px;
+  font-size: 14px; /* reduced from 16px */
+  background-color: #0056d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+  background-color: #003d99;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+  font-size: 12px; /* reduced from 14px */
+  text-align: center;
+}

@@ -1,0 +1,53 @@
+/* Styles for logs component */
+h1 {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px; /* reduced font size */
+}
+
+th, td {
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  font-size: 10px; /* reduced font size */
+}
+
+th {
+  background-color: #f4f4f4;
+  text-align: left;
+  font-size: 10px; /* reduced font size */
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.filter-button {
+  background-color: yellow;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.clear-filter-button {
+  background-color: orange;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: white;
+}
+
+.row-pass {
+  background-color: #d4edda !important; /* light green */
+}
+
+.row-fail {
+  background-color: #f8d7da !important; /* light red */
+}

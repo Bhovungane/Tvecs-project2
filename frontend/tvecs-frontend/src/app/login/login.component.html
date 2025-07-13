@@ -1,0 +1,15 @@
+<div class="login-container">
+  <h2>Staff Login</h2>
+  <form (ngSubmit)="login()">
+    <div class="input-icon">
+      <span class="icon">👤</span>
+<input id="username" type="text" [(ngModel)]="username" name="username" placeholder="Username" required />
+    </div>
+    <div class="input-icon">
+      <span class="icon">🔒</span>
+      <input id="password" type="password" [(ngModel)]="password" name="password" placeholder="Password" required />
+    </div>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <button type="submit" class="login-button">LOG IN</button>
+  </form>
+</div>
